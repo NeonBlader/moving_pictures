@@ -2,20 +2,20 @@
 from PIL import Image 
 import numpy as np 
 import scipy.ndimage 
-from scipy.ndimage.morphology import *
+from scipy.ndimage import *
 import progressbar 
 
-from moving_pictures import make_movie, resize  
+from moving_pictures import make_movie, resize
 
 def main(image_name='tyler.png', image_size = 200, n_frames=150, n_interpolation_frames=0):
   image = Image.open('tyler.png')
   image = resize(image, image_size)
   image = np.array(image)
-  print image.shape
+  print(image.shape)
   image = image.astype('float') / image.max()
   nrows, ncols = image.shape[:2]
   images = [image]
-  print "Generating frames..."
+  print("Generating frames...")
   d_structure_size = 3+np.random.randint(low=0,high=6,size=2)*2
   d_structure = np.random.randn(d_structure_size[0], d_structure_size[1]) > np.random.randn() / 5 
   e_structure_size = 3+np.random.randint(low=0,high=6,size=2)*2
@@ -25,7 +25,7 @@ def main(image_name='tyler.png', image_size = 200, n_frames=150, n_interpolation
   def erode(x):
     return grey_erosion(x, footprint = e_structure)
   progress = progressbar.ProgressBar()
-  for i in progress(xrange(n_frames)):
+  for i in progress(range(n_frames)):
     r = image[:,:,0]
     g = image[:,:,1]
     b = image[:,:,2]

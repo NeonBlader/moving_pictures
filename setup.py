@@ -6,7 +6,7 @@ import sys
 
 extension_modules = []
 setup(
-    name="moving_pictures",
+    name="moving_pictures12",
     description="Create a movie from a sequence of images in Python (uses PIL and ffmpeg)",
     classifiers=['Development Status :: 3 - Alpha',
                  'Topic :: Software Development :: Libraries',
@@ -19,7 +19,7 @@ setup(
     license="BSD",
     version="0.1",
     url="http://github.com/iskandr/moving_pictures",
-    packages=[ 'moving_pictures' ],
+    packages=[ 'moving_pictures12' ],
     package_dir={ '' : '.' },
     requires=[
       'numpy', 

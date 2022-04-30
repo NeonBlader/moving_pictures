@@ -59,7 +59,7 @@ def make_movie(images, movie_name = 'movie.mpg',
 
     n_digits = int(math.ceil(np.log10(total)))
     format_string = "img%%0%dd.png" % n_digits
-    print "Writing %d images" % total 
+    print("Writing %d images" % total)
     progress = progressbar.ProgressBar(maxval=total).start()
     last_image = None 
     def write_image(image):
@@ -73,7 +73,7 @@ def make_movie(images, movie_name = 'movie.mpg',
     for image in images:
       if last_image is not None: 
         # interpolate between successive images 
-        for j in xrange(n_interpolation_frames):
+        for j in range(n_interpolation_frames):
           weight = float(j) / (n_interpolation_frames+1)
           
           new_image = last_image * (1-weight) + weight * image
@@ -93,6 +93,6 @@ def make_movie(images, movie_name = 'movie.mpg',
   finally:
     try:
         shutil.rmtree(base) # delete directory
-    except OSError, e:
+    except OSError as e:
         if e.errno != 2: # code 2 - no such file or directory
             raise  
